@@ -1,79 +1,57 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Projeto Mobile - Satisfying.you
 
-# Getting Started
+## Descrição geral do projeto
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+A pesquisa de satisfação é essencial para entender como os clientes de uma corporação se sentem em relação à empresa. Por meio dos dados coletados, a empresa pode realizar melhorias em seu processo, pessoas e/ou produtos/serviços.
 
-## Step 1: Start the Metro Server
+Nesse sentido, é proposto nesta disciplina o desenvolvimento de uma aplicação para dispositivos móveis compatível com Android/iOS para realizar pesquisas com clientes/usuários de uma corporação.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+Os requisitos gerais do projeto são:
 
-To start Metro, run the following command from the _root_ of your React Native project:
+1. Gestão de usuários: cadastro e autenticação de usuários, e recuperação de senha;
+2. Gestão de pesquisas: cada usuário poderá gerenciar diferentes pesquisas de produtos/serviços;
+3. Coleta da satisfação do usuário;
+4. Produção de relatórios gráficos por pesquisa.
+### Parte 1
 
-```bash
-# using npm
-npm start
+A primeira parte do projeto visa o desenvolvimento da interface gráfica do projeto utilizando a biblioteca React-Native sem considerar a autenticação de usuários e persistência de dados. Contudo, é obrigatório seguir as cores, os ícones, o fluxo de navegação, fontes, esquema de layout do protótipo disponível em Figma (clique aqui).
 
-# OR using Yarn
-yarn start
-```
+Os critérios avaliativos da parte 1 e suas respectivas pontuações estão listados abaixo:
 
-## Step 2: Start your Application
+Critério 1 (2,7). Elaboração de todas as interfaces do aplicativo seguindo o layout e cores do protótipo, incluindo:
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+1. Login
+2. Criar conta
+3. Recuperar senha
+4. Home
+5. Nova pesquisa
+6. Modificar pesquisa
+7. Ações de pesquisa
+8. Coleta de satisfação
+9. Agradecimentos
 
-### For Android
+### Critérios
 
-```bash
-# using npm
-npm run android
+1. Checagem de campos nas seguintes telas:
+   1. Login - verificação de e-mail válido
+   2. NovaConta - verificação de senhas iguais e e-mail
+   3. RecuperarSenha - verificação de email válido
+   4. NovaPesquisa - verificação de todos os campos preenchidos
 
-# OR using Yarn
-yarn android
-```
+2. Criação do componente Card da pesquisa: contendo nome da pesquisa, data da pesquisa e a imagem da pesquisa. Os dados exibidos neste componente devem ser passados por meio de atributos do componente.
 
-### For iOS
+3. Implementação da barra lateral de navegação (DrawerNavigator)
 
-```bash
-# using npm
-npm run ios
+4. Implementação da navegação utilizando Stack Navigator	
 
-# OR using Yarn
-yarn ios
-```
+5. Exibição de caixa de diálogo (pop up) para confirmar exclusão de uma vacina.
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+6. Implementação da interface de relatório de uma pesquisa contendo um gráfico de Pizza, contendo legenda. Utilize dados fictícios.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+7. Timer de 3 segundos para realizar a transição automática da tela AgradecimentoParticipacao para a tela Coleta.
 
-## Step 3: Modifying your App
+---
 
-Now that you have successfully run the app, let's modify it.
+<!-- #### **Avaliação final do projeto - x.x** -->
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+_* Esperando avaliação_
