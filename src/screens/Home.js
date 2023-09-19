@@ -21,7 +21,7 @@ const estilos = StyleSheet.create({
 
 const Home = (props) => {
     const NovaPesquisa = () => {
-        //props.navigation.push('')
+        props.navigation.push('NewSearch')
     }
     return (
         <View style={ScreensSS.conteiner}>

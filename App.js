@@ -5,6 +5,7 @@ import NewAccount from './src/screens/NewAccount'
 import RecoverPassword from './src/screens/RecoverPassword'
 import Drawer from './src/screens/Drawer'
 import Home from './src/screens/Home'
+import NewSearch from './src/screens/NewSearch'
 import { PaperProvider, MD3LightTheme as DefaultTheme } from 'react-native-paper'
 
 const theme = {
@@ -32,6 +33,7 @@ const App = () => {
                     <Stack.Screen name='RecoverPassword' component={RecoverPassword} options={{ title: 'Recuperação de senha', headerBackTitle: false }} />
                     <Stack.Screen name='Drawer' component={Drawer} options={{ headerShown: false }} />
                     <Stack.Screen name='Home' component={Home} />
+                    <Stack.Screen name='NewSearch' component={NewSearch} options={{ title: 'Nova pesquisa' }} />
                 </Stack.Navigator>
             </NavigationContainer>
         </PaperProvider>
