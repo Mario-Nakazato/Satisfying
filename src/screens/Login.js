@@ -35,10 +35,10 @@ const Login = (props) => {
         props.navigation.push('Drawer')
     }
     const CriarMinhaConta = () => {
-        //props.navigation.push('')
+        props.navigation.push('NewAccount')
     }
     const EsqueciMinhaSenha = () => {
-        //props.navigation.push('')
+        props.navigation.push('RecoverPassword')
     }
     return (
         <View style={ScreensSS.conteiner}>

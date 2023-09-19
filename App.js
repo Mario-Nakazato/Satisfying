@@ -1,6 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import Login from './src/screens/Login'
+import NewAccount from './src/screens/NewAccount'
+import RecoverPassword from './src/screens/RecoverPassword'
 import Drawer from './src/screens/Drawer'
 import Home from './src/screens/Home'
 import { PaperProvider, MD3LightTheme as DefaultTheme } from 'react-native-paper'
@@ -26,6 +28,8 @@ const App = () => {
                         headerTitleStyle: { color: 'white', fontFamily: 'AveriaLibre-Regular' }
                     }}>
                     <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
+                    <Stack.Screen name='NewAccount' component={NewAccount} options={{ title: 'Nova Conta' }} />
+                    <Stack.Screen name='RecoverPassword' component={RecoverPassword} options={{ title: 'Recuperação de senha', headerBackTitle: false }} />
                     <Stack.Screen name='Drawer' component={Drawer} options={{ headerShown: false }} />
                     <Stack.Screen name='Home' component={Home} />
                 </Stack.Navigator>
