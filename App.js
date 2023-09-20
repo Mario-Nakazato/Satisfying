@@ -6,6 +6,11 @@ import RecoverPassword from './src/screens/RecoverPassword'
 import Drawer from './src/screens/Drawer'
 import Home from './src/screens/Home'
 import NewSearch from './src/screens/NewSearch'
+import ModifySearch from './src/screens/ModifySearch'
+import SearchActions from './src/screens/SearchActions'
+import Report from './src/screens/Report'
+import Collect from './src/screens/Collect'
+import ThanksParticipation from './src/screens/ThanksParticipation'
 import { PaperProvider, MD3LightTheme as DefaultTheme } from 'react-native-paper'
 
 const theme = {
@@ -34,6 +39,11 @@ const App = () => {
                     <Stack.Screen name='Drawer' component={Drawer} options={{ headerShown: false }} />
                     <Stack.Screen name='Home' component={Home} />
                     <Stack.Screen name='NewSearch' component={NewSearch} options={{ title: 'Nova pesquisa' }} />
+                    <Stack.Screen name='ModifySearch' component={ModifySearch} options={{ title: 'Modificar pesquisa' }} />
+                    <Stack.Screen name='SearchActions' component={SearchActions} options={{ title: 'Pesquisa' }} />
+                    <Stack.Screen name='Report' component={Report} options={{ title: 'Relatório' }} />
+                    <Stack.Screen name='Collect' component={Collect} options={{ headerShown: false }} />
+                    <Stack.Screen name='ThanksParticipation' component={ThanksParticipation} options={{ headerShown: false }} />
                 </Stack.Navigator>
             </NavigationContainer>
         </PaperProvider>
