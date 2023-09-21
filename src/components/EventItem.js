@@ -1,17 +1,12 @@
-//Import
-import { cloneElement } from 'react'
-import {View, Text, Image, StyleSheet} from 'react-native'
-
-//Component
+import { View, Text, Image, StyleSheet } from 'react-native'
 
 const EventItem = (props) => {
-
     return (
         <View style={styles.container}>
             <View>
-                <Image style={styles.image} source={{uri: props.imagem}}/>  
+                <Image style={styles.image} source={{ uri: props.imagem }} />
             </View>
-            
+
             <View style={styles.texto}>
                 <Text style={styles.title}>{props.nome.toUpperCase()}</Text>
                 <Text style={styles.date}>{props.data}</Text>
@@ -45,11 +40,10 @@ const styles = StyleSheet.create({
         color: '#4193c5',
         textAlign: 'center',
     },
-    date:{
+    date: {
         fontSize: 10,
         textAlign: 'center',
     }
 })
 
-//Export
 export default EventItem
