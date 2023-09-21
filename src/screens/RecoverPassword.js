@@ -14,7 +14,7 @@ const RecoverPassword = (props) => {
                 <BoxInput value='email@provedor.com' Text='E-mail' />
                 <Erro Erro='E-mail parece ser inválido' />
             </View>
-            <Button Text='RECUPERAR' Execute={Cadastrar} BackgroundColor='#37BD6D' FontSize={16} Height={32} />
+            <Button Text='RECUPERAR' Execute={Cadastrar} BackgroundColor='#37BD6D' FontSize={16} Width={512} Height={32} />
         </View>
     )
 }

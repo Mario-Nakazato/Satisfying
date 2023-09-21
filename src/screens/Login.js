@@ -40,6 +40,7 @@ const Login = (props) => {
     const EsqueciMinhaSenha = () => {
         props.navigation.push('RecoverPassword')
     }
+    
     return (
         <View style={ScreensSS.conteiner}>
             <View style={estilos.conteinerTitulo}>
@@ -50,11 +51,11 @@ const Login = (props) => {
                 <BoxInput value='email@provedor.com' Text='E-mail' />
                 <BoxInput value='********' Text='Senha' />
                 <Erro Erro='E-mail e/ou senha inválidos.' />
-                <Button Text='Entrar' Execute={Entrar} BackgroundColor='#37BD6D' FontSize={16} Height={32} />
+                <Button Text='Entrar' Execute={Entrar} BackgroundColor='#37BD6D' FontSize={16} Width={512} Height={32} />
             </View>
             <View style={estilos.conteinerOp}>
-                <Button Text='Criar minha conta' Execute={CriarMinhaConta} BackgroundColor='#419ED7' FontSize={14} Height={24} />
-                <Button Text='Esqueci minha senha' Execute={EsqueciMinhaSenha} BackgroundColor='#B0CCDE' FontSize={14} Height={24} />
+                <Button Text='Criar minha conta' Execute={CriarMinhaConta} BackgroundColor='#419ED7' FontSize={14} Width={512} Height={24} />
+                <Button Text='Esqueci minha senha' Execute={EsqueciMinhaSenha} BackgroundColor='#B0CCDE' FontSize={14} Width={512} Height={24} />
             </View>
         </View>
     )

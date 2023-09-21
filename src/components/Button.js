@@ -5,7 +5,7 @@ const Button = (props) => {
         TouchableOpacity: {
             justifyContent: 'center',
             alignItems: 'center',
-            minWidth: 512,
+            width: props.Width,
             height: props.Height,
             Text: {
                 fontSize: props.fontSize,

@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet } from 'react-native'
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import { Text, StyleSheet, TouchableOpacity } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const estilos = StyleSheet.create({
     emoticon: {
@@ -16,10 +16,10 @@ const estilos = StyleSheet.create({
 
 const Emoticon = (props) => {
     return (
-        <View style={estilos.emoticon}>
+        <TouchableOpacity style={estilos.emoticon} onPress={props.Execute}>
             <Icon name={props.name} size={96} color={props.color} />
             <Text style={estilos.Text}>{props.Label}</Text>
-        </View>
+        </TouchableOpacity>
     )
 }
 

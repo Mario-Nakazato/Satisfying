@@ -26,7 +26,7 @@ const NewAccount = (props) => {
                 <Erro Erro='O campo repetir senha difere da senha' />
             </View>
             <View style={estilos.conteiner}>
-                <Button Text='CADASTRAR' Execute={Cadastrar} BackgroundColor='#37BD6D' FontSize={16} Height={32} />
+                <Button Text='CADASTRAR' Execute={Cadastrar} BackgroundColor='#37BD6D' FontSize={16} Width={512} Height={32} />
             </View>
         </View>
     )

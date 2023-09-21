@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import ScreensSS from '../styles/ScreensSS'
 
@@ -10,6 +11,14 @@ const estilos = StyleSheet.create({
 })
 
 const ThanksParticipation = (props) => {
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            props.navigation.push('Collect');
+        }, 3000)
+
+        return () => clearTimeout(timeout);
+    }, [])
+    
     return (
         <View style={ScreensSS.conteiner}>
             <Text style={estilos.text}>Obrigado por participar da pesquisa!</Text>

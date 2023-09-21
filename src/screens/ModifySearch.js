@@ -23,7 +23,7 @@ const ModifySearch = (props) => {
                 <Erro Erro='Preencha no nome da pesquisa' />
                 <BoxInput value='' Text='Data' />
                 <Erro Erro='Preencha a data' />
-                <Button Text='SALVAR' Execute={Salvar} BackgroundColor='#37BD6D' FontSize={16} Height={32} />
+                <Button Text='SALVAR' Execute={Salvar} BackgroundColor='#37BD6D' FontSize={16} Width={512} Height={32} />
             </View>
         </View>
     )
