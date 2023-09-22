@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import ScreensSS from '../styles/ScreensSS'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Label from '../components/Label'
 import InputText from '../components/InputText'
 import Button from '../components/Button'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const estilos = StyleSheet.create({
     conteinerTitulo: {
