@@ -47,13 +47,16 @@ const Home = (props) => {
 	const NovaPesquisa = () => {
 		props.navigation.push('NewSearch')
 	}
+	const Card = () => {
+		props.navigation.push('SearchActions')
+	}
 	return (
 		<SafeAreaView style={ScreensSS.conteiner}>
 			{/* <TextInput style={{ color: 'red' }} label="Insira o termo de busca..." left={<TextInput.Icon icon='magnify' />} /> */}
 			<View style={estilos.searchBarContainer}>
 				<SearchBar />
 			</View>
-			<EventList events={eventos} />
+			<EventList events={eventos} Execute={Card} />
 			<Emoticon value='NOVA PESQUISA' color='white' iconColor='white' backgroundColor='#37BD6D' width={768} height={32}
                 size={0} fontSize={16} Execute={NovaPesquisa} />
 		</SafeAreaView>

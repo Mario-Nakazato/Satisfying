@@ -8,7 +8,7 @@ const EventList = props => {
 			<FlatList
 				data={props.events}
 				renderItem={({ item }) => (
-					<TouchableOpacity>
+					<TouchableOpacity onPress={props.Execute}>
 						<EventItem nome={item.nome} data={item.data} imagem={item.imagem} />
 					</TouchableOpacity>
 				)}
