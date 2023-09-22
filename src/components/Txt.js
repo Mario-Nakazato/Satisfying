@@ -8,12 +8,13 @@ const Txt = (props) => {
             paddingBottom: props.paddingBottom,
             fontFamily: 'AveriaLibre-Regular',
             fontSize: props.fontSize,
+            textAlign: props.textAlign
         },
     })
     return (
-        <View>
+        <>
             <Text style={estilos.Texto}>{props.value}</Text>
-        </View>
+        </>
     )
 }
 

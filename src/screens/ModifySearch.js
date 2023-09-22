@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Modal } from 'react-native'
 import ScreensSS from '../styles/ScreensSS'
 import Txt from '../components/Txt'
 import InputText from '../components/InputText'
@@ -15,6 +15,7 @@ const estilos = StyleSheet.create({
 const ModifySearch = (props) => {
     const [nome, setNome] = useState()
     const [data, setData] = useState()
+    const [modalVisible, setModalVisible] = useState(false)
 
     const Imagem = () => {
         console.log('Botão - Modificar Câmera/Galeria de imagens')
@@ -23,8 +24,15 @@ const ModifySearch = (props) => {
         props.navigation.push('Drawer')
     }
     const Excluir = () => {
-        console.log('Excluir')
-        //props.navigation.push('SearchActions')
+        setModalVisible(true)
+    }
+    const Sim = () => {
+        setModalVisible(false)
+        props.navigation.push('Drawer')
+    }
+    const Cancelar = () => {
+        setModalVisible(false)
+        props.navigation.push('SearchActions')
     }
 
     return (
@@ -50,6 +58,25 @@ const ModifySearch = (props) => {
             <View style={{ position: 'absolute', bottom: 16, right: 16 }}>
                 <Emoticon name='trash-can-outline' color='white' iconColor='white' value='Apagar' size={32} fontSize={14} Execute={Excluir} />
             </View>
+            <Modal
+                animationType='none'
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                    Alert.alert('Modal has been closed.')
+                    setModalVisible(!modalVisible)
+                    console.log('MODAL CLOSE')
+                }}>
+                <View style={{ backgroundColor: '#2B1F5C', alignSelf: 'center', justifyContent: 'space-evenly', alignItems: 'center', width: 256, height: 128, marginTop: 100 }}>
+                    <Txt value='Tem certeza de apagar essa pesquisa?' color='white' fontSize={16} textAlign='center' />
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: '100%' }}>
+                        <Emoticon value='SIM' color='white' backgroundColor='#FF8383' width={100} height={32} size={0} fontSize={16}
+                            Execute={Sim} />
+                        <Emoticon value='CANCELAR' color='white' backgroundColor='#3F92C5' width={100} height={32} size={0} fontSize={16}
+                            Execute={Cancelar} />
+                    </View>
+                </View>
+            </Modal>
         </View>
     )
 }
