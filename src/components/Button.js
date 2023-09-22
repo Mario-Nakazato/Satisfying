@@ -1,27 +1,25 @@
-import { TouchableOpacity, Text, StyleSheet } from "react-native"
+import { TouchableOpacity, StyleSheet } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import Txt from './Txt'
 
 const Button = (props) => {
     const estilos = StyleSheet.create({
-        TouchableOpacity: {
+        emoticon: {
+            flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            width: props.Width,
-            height: props.Height,
-            Text: {
-                fontSize: props.fontSize,
-                color: 'white',
-                fontFamily: 'AveriaLibre-Regular',
-            },
-            backgroundColor: props.BackgroundColor,
-        }
+            backgroundColor: props.backgroundColor,
+            borderRadius: props.borderRadius,
+            width: props.width,
+            height: props.height,
+        },
     })
 
     return (
-        <>
-            <TouchableOpacity style={estilos.TouchableOpacity} onPress={props.Execute}>
-                <Text style={estilos.TouchableOpacity.Text}>{props.Text}</Text>
-            </TouchableOpacity>
-        </>
+        <TouchableOpacity style={estilos.emoticon} onPress={props.Execute}>
+            <Icon name={props.name} size={props.size} color={props.iconColor} />
+            <Txt value={props.value} color={props.color} fontSize={props.fontSize} />
+        </TouchableOpacity>
     )
 }
 
