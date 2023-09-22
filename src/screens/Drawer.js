@@ -1,6 +1,7 @@
 import { createDrawerNavigator } from "@react-navigation/drawer"
 import Home from "./Home"
 import Chest from "../components/Chest"
+import NewSearch from "./NewSearch"
 import ModifySearch from "./ModifySearch"
 import SearchActions from "./SearchActions"
 import Report from "./Report"
@@ -24,7 +25,8 @@ const Drawer = () => {
                 headerTitleStyle: { color: '#2B1D62' },
             }}>
             <DrawerNavigator.Screen name='Home' component={Home} options={{ title: 'Pesquisa' }} />
-            {/* <DrawerNavigator.Screen name='ModifySearch' component={ModifySearch} options={{ title: 'ModifySearch' }} />
+            {/* <DrawerNavigator.Screen name='NewSearch' component={NewSearch} options={{ title: 'NewSearch' }} />
+            <DrawerNavigator.Screen name='ModifySearch' component={ModifySearch} options={{ title: 'ModifySearch' }} />
             <DrawerNavigator.Screen name='SearchActions' component={SearchActions} options={{ title: 'SearchActions' }} />
             <DrawerNavigator.Screen name='Report' component={Report} options={{ title: 'Report' }} />
             <DrawerNavigator.Screen name='Collect' component={Collect} options={{ title: 'Collect' }} />
