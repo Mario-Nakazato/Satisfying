@@ -1,33 +1,38 @@
+import { useState } from 'react'
 import { View } from 'react-native'
-import { StyleSheet } from 'react-native'
 import ScreensSS from '../styles/ScreensSS'
-import BoxInput from '../components/BoxInput'
-import Button from '../components/Button'
-import Erro from '../components/Erro'
-
-const estilos = StyleSheet.create({
-    conteinerCadastrar: {
-        flexDirection: 'column',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-    },
-})
+import Txt from '../components/Txt'
+import InputText from '../components/InputText'
+import Emoticon from '../components/Button'
 
 const NewAccount = (props) => {
+    const [email, setEmail] = useState()
+    const [senha, setSenha] = useState()
+    const [repetirSenha, setRepetirSenha] = useState()
+
     const Cadastrar = () => {
         props.navigation.pop()
     }
     return (
         <View style={ScreensSS.conteiner}>
-            <View style={estilos.conteinerCadastrar}>
-                <BoxInput value='email@provedor.com' Text='E-mail' />
-                <BoxInput value='****' Text='Senha' />
-                <BoxInput value='****' Text='Repetir Senha' />
-                <Erro Erro='O campo repetir senha difere da senha' />
+            <View>
+                <Txt value='E-mail' color='white' fontSize={16} paddingTop={4} />
+                <InputText value={email} placeholder='email@provedor.com' color='#3F92C5' width={512} height={32} fontSize={12}
+                    onChangeText={setEmail} keyboardType='email-address' />
             </View>
-            <View style={estilos.conteiner}>
-                <Button Text='CADASTRAR' Execute={Cadastrar} BackgroundColor='#37BD6D' FontSize={16} Width={512} Height={32} />
+            <View>
+                <Txt value='Senha' color='white' fontSize={16} paddingTop={4} />
+                <InputText value={senha} placeholder='********' color='#3F92C5' width={512} height={32} fontSize={12}
+                    onChangeText={setSenha} keyboardType='visible-password' />
             </View>
+            <View>
+                <Txt value='Repetir Senha' color='white' fontSize={16} paddingTop={4} />
+                <InputText value={repetirSenha} placeholder='********' color='#3F92C5' width={512} height={32} fontSize={12}
+                    onChangeText={setRepetirSenha} keyboardType='visible-password' />
+                <Txt value='O campo repetir senha difere da senha' color='#FD7979' fontSize={14} />
+            </View>
+            <Emoticon value='CADASTRAR' color='white' iconColor='white' backgroundColor='#37BD6D' width={512} height={32}
+                size={0} fontSize={16} Execute={Cadastrar} />
         </View>
     )
 }
