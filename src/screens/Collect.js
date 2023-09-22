@@ -18,7 +18,7 @@ const estilos = StyleSheet.create({
 
 const Collect = (props) => {
     const Voltar = () => {
-        props.navigation.push('SearchActions')
+        props.navigation.pop()
     }
     const Votar = () => {
         props.navigation.push('ThanksParticipation')

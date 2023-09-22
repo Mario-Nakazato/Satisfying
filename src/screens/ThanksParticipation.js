@@ -13,10 +13,10 @@ const estilos = StyleSheet.create({
 const ThanksParticipation = (props) => {
     useEffect(() => {
         const timeout = setTimeout(() => {
-            props.navigation.push('Collect');
+            props.navigation.pop()
         }, 3000)
 
-        return () => clearTimeout(timeout);
+        return () => clearTimeout(timeout)
     }, [])
     
     return (

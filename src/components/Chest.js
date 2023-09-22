@@ -3,7 +3,7 @@ import {
     DrawerContentScrollView,
     DrawerItem,
     DrawerItemList,
-} from '@react-navigation/drawer';
+} from '@react-navigation/drawer'
 import { Divider } from 'react-native-paper'
 
 const Chest = (props) => {
@@ -22,7 +22,7 @@ const Chest = (props) => {
             </View>
             <DrawerItem labelStyle={{ color: 'white' }} label="Sair" onPress={Sair} />
         </DrawerContentScrollView >
-    );
+    )
 }
 
 export default Chest

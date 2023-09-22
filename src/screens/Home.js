@@ -7,7 +7,7 @@ import SearchBar from '../components/SearchBar'
 import Button from '../components/Button'
 
 const linkImagem =
-	'https://boo-prod.b-cdn.net/questions/6503684e231cffaf85bde63f/16947221287341967f15b1de81112cca71f27fcb18f8e.jpg?d=400x400';
+	'https://boo-prod.b-cdn.net/questions/6503684e231cffaf85bde63f/16947221287341967f15b1de81112cca71f27fcb18f8e.jpg?d=400x400'
 
 const eventos = [
 	{

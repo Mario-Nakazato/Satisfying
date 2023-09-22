@@ -20,7 +20,7 @@ const NewSearch = (props) => {
         console.log('Botão - Câmera/Galeria de imagens')
     }
     const Cadastrar = () => {
-        props.navigation.push('Drawer')
+        props.navigation.pop()
     }
 
     return (

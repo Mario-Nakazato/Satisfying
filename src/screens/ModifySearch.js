@@ -21,18 +21,18 @@ const ModifySearch = (props) => {
         console.log('Botão - Modificar Câmera/Galeria de imagens')
     }
     const Salvar = () => {
-        props.navigation.push('Drawer')
+        props.navigation.navigate('Drawer')
     }
     const Excluir = () => {
         setModalVisible(true)
     }
     const Sim = () => {
         setModalVisible(false)
-        props.navigation.push('Drawer')
+        props.navigation.navigate('Drawer')
     }
     const Cancelar = () => {
         setModalVisible(false)
-        props.navigation.push('SearchActions')
+        props.navigation.pop()
     }
 
     return (
