@@ -1,16 +1,16 @@
+import { useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import BoxInput from '../components/BoxInput'
-import Button from '../components/Button'
-import Erro from '../components/Erro'
 import ScreensSS from '../styles/ScreensSS'
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import Txt from '../components/Txt'
+import InputText from '../components/InputText'
+import Emoticon from '../components/Button'
 
 const estilos = StyleSheet.create({
     conteinerTitulo: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        width: 512,
         Texto: {
             color: 'white',
             fontFamily: 'AveriaLibre-Regular',
@@ -19,18 +19,21 @@ const estilos = StyleSheet.create({
     },
     conteinerEntrar: {
         flexDirection: 'column',
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-between',
         alignItems: 'center',
     },
     conteinerOp: {
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
-        height: 56,
+        height: 52,
     },
 })
 
 const Login = (props) => {
+    const [email, setEmail] = useState()
+    const [senha, setSenha] = useState()
+
     const Entrar = () => {
         props.navigation.push('Drawer')
     }
@@ -40,22 +43,34 @@ const Login = (props) => {
     const EsqueciMinhaSenha = () => {
         props.navigation.push('RecoverPassword')
     }
-    
+
     return (
         <View style={ScreensSS.conteiner}>
             <View style={estilos.conteinerTitulo}>
                 <Text style={estilos.conteinerTitulo.Texto}>Satisfying.you</Text>
-                <Icon name='sentiment-satisfied' size={64} color='white' />
+                <Icon style={{ paddingLeft: 16 }} name='emoticon-happy-outline' size={48} color='white' />
             </View>
             <View style={estilos.conteinerEntrar}>
-                <BoxInput value='email@provedor.com' Text='E-mail' />
-                <BoxInput value='********' Text='Senha' />
-                <Erro Erro='E-mail e/ou senha inválidos.' />
-                <Button Text='Entrar' Execute={Entrar} BackgroundColor='#37BD6D' FontSize={16} Width={512} Height={32} />
+                <View>
+                    <Txt value='E-mail' color='white' fontSize={16} />
+                    <InputText value={email} placeholder='email@provedor.com' color='#3F92C5' width={512} height={32}
+                        fontSize={12}
+                        onChangeText={setEmail} keyboardType='email-address' />
+                </View>
+                <View>
+                    <Txt value='Senha' color='white' fontSize={16} paddingTop={4} />
+                    <InputText value={senha} placeholder='********' color='#3F92C5' width={512} height={32} fontSize={12}
+                        onChangeText={setSenha} keyboardType='visible-password' />
+                    <Txt value='E-mail e/ou senha inválidos.' color='#FD7979' fontSize={14} paddingBottom={8} />
+                </View>
+                <Emoticon value='Entrar' color='white' iconColor='white' backgroundColor='#37BD6D' width={512} height={32} size={0} fontSize={16}
+                    Execute={Entrar} />
             </View>
             <View style={estilos.conteinerOp}>
-                <Button Text='Criar minha conta' Execute={CriarMinhaConta} BackgroundColor='#419ED7' FontSize={14} Width={512} Height={24} />
-                <Button Text='Esqueci minha senha' Execute={EsqueciMinhaSenha} BackgroundColor='#B0CCDE' FontSize={14} Width={512} Height={24} />
+                <Emoticon value='Criar minha conta' color='white' iconColor='white' backgroundColor='#419ED7' width={512} height={24} size={0}
+                    fontSize={14} Execute={CriarMinhaConta} />
+                <Emoticon value='Esqueci minha senha' color='white' iconColor='white' backgroundColor='#B0CCDE' width={512} height={24} size={0}
+                    fontSize={14} Execute={EsqueciMinhaSenha} />
             </View>
         </View>
     )
