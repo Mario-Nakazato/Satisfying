@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { Text, StyleSheet } from 'react-native'
 
-const Txt = (props) => {
+const Label = (props) => {
     const estilos = StyleSheet.create({
         Texto: {
             color: props.color,
@@ -18,4 +18,4 @@ const Txt = (props) => {
     )
 }
 
-export default Txt
+export default Label

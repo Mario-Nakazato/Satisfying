@@ -1,10 +1,10 @@
 import { TouchableOpacity, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import Txt from './Txt'
+import Label from './Label'
 
 const Button = (props) => {
     const estilos = StyleSheet.create({
-        emoticon: {
+        TouchableOpacity: {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
@@ -16,9 +16,9 @@ const Button = (props) => {
     })
 
     return (
-        <TouchableOpacity style={estilos.emoticon} onPress={props.Execute}>
+        <TouchableOpacity style={estilos.TouchableOpacity} onPress={props.Execute}>
             <Icon name={props.name} size={props.size} color={props.iconColor} />
-            <Txt value={props.value} color={props.color} fontSize={props.fontSize} />
+            <Label value={props.value} color={props.color} fontSize={props.fontSize} />
         </TouchableOpacity>
     )
 }

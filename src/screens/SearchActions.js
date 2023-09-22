@@ -1,6 +1,6 @@
 import { View, StyleSheet } from 'react-native'
 import ScreensSS from '../styles/ScreensSS'
-import Emoticon from '../components/Button'
+import Button from '../components/Button'
 
 const estilos = StyleSheet.create({
     conteiner: {
@@ -24,11 +24,11 @@ const SearchActions = (props) => {
     return (
         <View style={ScreensSS.conteiner}>
             <View style={estilos.conteiner}>
-                <Emoticon name='file-document-edit-outline' color='white' iconColor='white' backgroundColor='#312464' borderRadius={8} value='Modificar'
+                <Button name='file-document-edit-outline' color='white' iconColor='white' backgroundColor='#312464' borderRadius={8} value='Modificar'
                     size={80} fontSize={32} width={210} height={170} Execute={Modificar} />
-                <Emoticon name='pencil-box-multiple-outline' color='white' iconColor='white' backgroundColor='#312464' borderRadius={8}
+                <Button name='pencil-box-multiple-outline' color='white' iconColor='white' backgroundColor='#312464' borderRadius={8}
                     value='Coletar dados' size={80} fontSize={32} width={210} height={170} Execute={Coletar} />
-                <Emoticon name='progress-pencil' color='white' iconColor='white' backgroundColor='#312464' borderRadius={8} value='Relatório' size={80}
+                <Button name='progress-pencil' color='white' iconColor='white' backgroundColor='#312464' borderRadius={8} value='Relatório' size={80}
                     fontSize={32} width={210} height={170} Execute={Relatorio} />
             </View>
         </View>

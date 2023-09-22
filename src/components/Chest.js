@@ -4,7 +4,7 @@ import {
     DrawerItem,
     DrawerItemList,
 } from '@react-navigation/drawer';
-import { Divider } from 'react-native-paper';
+import { Divider } from 'react-native-paper'
 
 const Chest = (props) => {
     const Sair = () => {

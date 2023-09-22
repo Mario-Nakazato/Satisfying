@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import ScreensSS from '../styles/ScreensSS'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import Txt from '../components/Txt'
+import Label from '../components/Label'
 import InputText from '../components/InputText'
-import Emoticon from '../components/Button'
+import Button from '../components/Button'
 
 const estilos = StyleSheet.create({
     conteinerTitulo: {
@@ -52,24 +52,24 @@ const Login = (props) => {
             </View>
             <View style={estilos.conteinerEntrar}>
                 <View>
-                    <Txt value='E-mail' color='white' fontSize={16} />
+                    <Label value='E-mail' color='white' fontSize={16} />
                     <InputText value={email} placeholder='email@provedor.com' color='#3F92C5' width={512} height={32}
                         fontSize={12}
                         onChangeText={setEmail} keyboardType='email-address' />
                 </View>
                 <View>
-                    <Txt value='Senha' color='white' fontSize={16} paddingTop={4} />
+                    <Label value='Senha' color='white' fontSize={16} paddingTop={4} />
                     <InputText value={senha} placeholder='********' color='#3F92C5' width={512} height={32} fontSize={12}
                         onChangeText={setSenha} keyboardType='visible-password' />
-                    <Txt value='E-mail e/ou senha inválidos.' color='#FD7979' fontSize={14} paddingBottom={8} />
+                    <Label value='E-mail e/ou senha inválidos.' color='#FD7979' fontSize={14} paddingBottom={8} />
                 </View>
-                <Emoticon value='Entrar' color='white' iconColor='white' backgroundColor='#37BD6D' width={512} height={32} size={0} fontSize={16}
+                <Button value='Entrar' color='white' iconColor='white' backgroundColor='#37BD6D' width={512} height={32} size={0} fontSize={16}
                     Execute={Entrar} />
             </View>
             <View style={estilos.conteinerOp}>
-                <Emoticon value='Criar minha conta' color='white' iconColor='white' backgroundColor='#419ED7' width={512} height={24} size={0}
+                <Button value='Criar minha conta' color='white' iconColor='white' backgroundColor='#419ED7' width={512} height={24} size={0}
                     fontSize={14} Execute={CriarMinhaConta} />
-                <Emoticon value='Esqueci minha senha' color='white' iconColor='white' backgroundColor='#B0CCDE' width={512} height={24} size={0}
+                <Button value='Esqueci minha senha' color='white' iconColor='white' backgroundColor='#B0CCDE' width={512} height={24} size={0}
                     fontSize={14} Execute={EsqueciMinhaSenha} />
             </View>
         </View>
