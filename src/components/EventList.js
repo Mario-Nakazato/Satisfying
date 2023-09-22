@@ -1,4 +1,4 @@
-import { View, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
+import { FlatList, StyleSheet, TouchableOpacity } from 'react-native'
 import EventItem from './EventItem'
 
 const EventList = (props) => {

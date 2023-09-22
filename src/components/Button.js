@@ -18,7 +18,7 @@ const Button = (props) => {
     return (
         <TouchableOpacity style={estilos.TouchableOpacity} onPress={props.Execute}>
             <Icon name={props.name} size={props.size} color={props.iconColor} />
-            <Label value={props.value} color={props.color} fontSize={props.fontSize} />
+            <Label value={props.value} color={props.color} fontSize={props.fontSize} textAlign={props.textAlign} />
         </TouchableOpacity>
     )
 }

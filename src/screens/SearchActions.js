@@ -24,12 +24,13 @@ const SearchActions = (props) => {
     return (
         <View style={ScreensSS.conteiner}>
             <View style={estilos.conteiner}>
-                <Button name='file-document-edit-outline' color='white' iconColor='white' backgroundColor='#312464' borderRadius={8} value='Modificar'
-                    size={80} fontSize={32} width={210} height={170} Execute={Modificar} />
-                <Button name='pencil-box-multiple-outline' color='white' iconColor='white' backgroundColor='#312464' borderRadius={8}
-                    value='Coletar dados' size={80} fontSize={32} width={210} height={170} Execute={Coletar} />
-                <Button name='progress-pencil' color='white' iconColor='white' backgroundColor='#312464' borderRadius={8} value='Relatório' size={80}
-                    fontSize={32} width={210} height={170} Execute={Relatorio} />
+                <Button name='file-document-edit-outline' color='white' iconColor='white' backgroundColor='#312464'
+                    borderRadius={8} value='Modificar' size={64} fontSize={20} height={140} width={140} Execute={Modificar} />
+                <Button name='pencil-box-multiple-outline' color='white' iconColor='white' backgroundColor='#312464'
+                    borderRadius={8} value='Coletar dados' size={64} fontSize={20} textAlign='center' height={140} width={140}
+                    Execute={Coletar} />
+                <Button name='progress-pencil' color='white' iconColor='white' backgroundColor='#312464'
+                    borderRadius={8} value='Relatório' size={64} fontSize={20} height={140} width={140} Execute={Relatorio} />
             </View>
         </View>
     )

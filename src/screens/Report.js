@@ -5,7 +5,9 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 const Report = (props) => {
     return (
         <View style={ScreensSS.conteiner}>
-            <Icon name='chart-arc' size={256} color='#239132' />
+            <View>
+                <Icon name='chart-arc' size={200} color='#239132' />
+            </View>
         </View>
     )
 }

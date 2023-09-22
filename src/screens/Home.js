@@ -53,11 +53,11 @@ const Home = (props) => {
 			<InputTextPaper placeholder='Insira o termo de busca...'
 				textColor='black' placeholderTextColor='#8B8B8B'
 				left={<TextInput.Icon style={{ right: 12 }} icon='magnify' color='#8B8B8B' />}
-				contentStyle={{ right: 20, fontFamily: 'AveriaLibre-Regular' }} backgroundColor='white' width={768} height={24} fontSize={12} />
+				contentStyle={{ right: 20, fontFamily: 'AveriaLibre-Regular' }} backgroundColor='white' width={'90%'} height={24} fontSize={12} />
 			<View style={{ height: 144 }}>
 				<EventList events={eventos} Execute={Card} />
 			</View>
-			<Button value='NOVA PESQUISA' color='white' iconColor='white' backgroundColor='#37BD6D' width={768} height={32}
+			<Button value='NOVA PESQUISA' color='white' iconColor='white' backgroundColor='#37BD6D' width={'90%'} height={32}
 				size={0} fontSize={16} Execute={NovaPesquisa} />
 		</View>
 	)

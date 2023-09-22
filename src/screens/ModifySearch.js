@@ -59,8 +59,8 @@ const ModifySearch = (props) => {
             </View>
             <Button value='SALVAR' color='white' iconColor='white' backgroundColor='#37BD6D' width={512} height={32} size={0} fontSize={16}
                 Execute={Salvar} />
-            <View style={{ position: 'absolute', bottom: 16, right: 16 }}>
-                <Button name='trash-can-outline' color='white' iconColor='white' value='Apagar' size={32} fontSize={14} Execute={Excluir} />
+            <View style={{ position: 'absolute', bottom: '4%', right: '2%' }}>
+                <Button name='trash-can-outline' color='white' iconColor='white' value='Apagar' size={24} fontSize={12} Execute={Excluir} />
             </View>
             <Modal
                 animationType='none'
