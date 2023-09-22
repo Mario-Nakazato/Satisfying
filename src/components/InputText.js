@@ -1,4 +1,4 @@
-import { View, TextInput, StyleSheet } from 'react-native'
+import { TextInput, StyleSheet } from 'react-native'
 
 const InputText = (props) => {
     const estilos = StyleSheet.create({
@@ -14,10 +14,10 @@ const InputText = (props) => {
     })
 
     return (
-        <View>
-            <TextInput placeholder={props.placeholder} style={estilos.TextInput} value={props.value} color={props.color}
+        <>
+            <TextInput style={estilos.TextInput} placeholder={props.placeholder} value={props.value} color={props.color}
                 placeholderTextColor={props.color} onChangeText={props.onChangeText} keyboardType={props.keyboardType} />
-        </View>
+        </>
     )
 }
 

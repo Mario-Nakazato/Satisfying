@@ -4,6 +4,8 @@ import ScreensSS from '../styles/ScreensSS'
 import Label from '../components/Label'
 import InputText from '../components/InputText'
 import Button from '../components/Button'
+import InputTextPaper from '../components/InputTextPaper'
+import { TextInput } from 'react-native-paper'
 
 const estilos = StyleSheet.create({
     conteinerCadastrar: {
@@ -45,8 +47,10 @@ const ModifySearch = (props) => {
                 </View>
                 <View>
                     <Label value='Data' color='white' fontSize={16} paddingTop={4} />
-                    <InputText value={data} placeholder='16/02/2024' color='#3F92C5' width={512} height={32} fontSize={12}
-                        onChangeText={setData} keyboardType='default' />
+                    <InputTextPaper placeholder='16/02/2024' value={data} color='#3F92C5' textColor='#3F92C5' placeholderTextColor='#3F92C5'
+                        right={<TextInput.Icon style={{ left: 12 }} icon='calendar-month-outline' color='#8B8B8B' />}
+                        contentStyle={{ right: 0, fontFamily: 'AveriaLibre-Regular', fontSize: 12 }} backgroundColor='white'
+                        width={512} height={32} onChangeText={setData} />
                 </View>
                 <View>
                     <Label value='Imagem' color='white' fontSize={16} paddingTop={4} />
