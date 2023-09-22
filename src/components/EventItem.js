@@ -6,7 +6,6 @@ const EventItem = (props) => {
             <View>
                 <Image style={styles.image} source={{ uri: props.imagem }} />
             </View>
-
             <View style={styles.texto}>
                 <Text style={styles.title}>{props.nome.toUpperCase()}</Text>
                 <Text style={styles.date}>{props.data}</Text>
@@ -17,31 +16,31 @@ const EventItem = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
-        marginHorizontal: 20,
-        borderRadius: 10,
-        marginBottom: 0,
-        width: 180,
-        height: 180,
+        marginHorizontal: 16,
+        borderRadius: 8,
+        width: 144,
+        height: 144,
     },
     image: {
-        width: 100,
-        height: 100
+        width: 72,
+        height: 72,
+        borderRadius: 72,
     },
     texto: {
-        marginTop: 15,
+        marginTop: 16,
     },
     title: {
         fontFamily: 'AveriaLibre-Regular',
-        fontSize: 25,
+        fontSize: 20,
         color: '#4193c5',
         textAlign: 'center',
     },
     date: {
-        fontSize: 10,
+        fontFamily: 'AveriaLibre-Regular',
+        fontSize: 12,
         textAlign: 'center',
     }
 })
