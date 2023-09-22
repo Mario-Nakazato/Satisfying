@@ -1,10 +1,10 @@
 import { View, StyleSheet } from 'react-native'
 import ScreensSS from '../styles/ScreensSS'
-import Button from '../components/Button'
 import { TextInput } from 'react-native-paper' // Escolher entre a versão SearchBar ou Paper
 import EventList from '../components/EventList'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import SearchBar from '../components/SearchBar'
+import Emoticon from '../components/Button'
 
 const linkImagem =
 	'https://boo-prod.b-cdn.net/questions/6503684e231cffaf85bde63f/16947221287341967f15b1de81112cca71f27fcb18f8e.jpg?d=400x400';
@@ -54,7 +54,8 @@ const Home = (props) => {
 				<SearchBar />
 			</View>
 			<EventList events={eventos} />
-			<Button Text='NOVA PESQUISA' Execute={NovaPesquisa} BackgroundColor='#37BD6D' FontSize={16} Width={768} Height={32} />
+			<Emoticon value='NOVA PESQUISA' color='white' iconColor='white' backgroundColor='#37BD6D' width={768} height={32}
+                size={0} fontSize={16} Execute={NovaPesquisa} />
 		</SafeAreaView>
 	)
 }
