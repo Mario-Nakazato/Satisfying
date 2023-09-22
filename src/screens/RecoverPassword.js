@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import ScreensSS from '../styles/ScreensSS'
 import InputText from '../components/InputText'
 import Label from '../components/Label'

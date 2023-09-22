@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import ScreensSS from '../styles/ScreensSS'
 import Label from '../components/Label'
 import InputText from '../components/InputText'
@@ -11,11 +11,6 @@ const estilos = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        Texto: {
-            color: 'white',
-            fontFamily: 'AveriaLibre-Regular',
-            fontSize: 48,
-        },
     },
     conteinerEntrar: {
         flexDirection: 'column',
@@ -47,7 +42,7 @@ const Login = (props) => {
     return (
         <View style={ScreensSS.conteiner}>
             <View style={estilos.conteinerTitulo}>
-                <Text style={estilos.conteinerTitulo.Texto}>Satisfying.you</Text>
+                <Label value='Satisfying.you' color='white' fontSize={48} />
                 <Icon style={{ paddingLeft: 16 }} name='emoticon-happy-outline' size={48} color='white' />
             </View>
             <View style={estilos.conteinerEntrar}>

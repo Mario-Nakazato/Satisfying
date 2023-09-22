@@ -1,13 +1,9 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import ScreensSS from '../styles/ScreensSS'
 import Button from '../components/Button'
+import Label from '../components/Label'
 
 const estilos = StyleSheet.create({
-    text: {
-        color: 'white',
-        fontFamily: 'AveriaLibre-Regular',
-        fontSize: 32,
-    },
     button: {
         flexDirection: 'row',
         justifyContent: 'space-evenly',
@@ -29,7 +25,7 @@ const Collect = (props) => {
             <View style={{ position: 'absolute', top: 0, right: 0 }}>
                 <Button iconColor='white' backgroundColor='#372775' width={32} height={32} Execute={Voltar} />
             </View>
-            <Text style={estilos.text}>O que você achou do Carnaval 2024 ?</Text>
+            <Label value='O que você achou do Carnaval 2024 ?' color='white' fontSize={32} numberOfLines={2} />
             <View style={estilos.button}>
                 <Button name='emoticon-angry-outline' color='white' iconColor='#D71616' value='Péssimo' size={96} fontSize={32} Execute={Votar} />
                 <Button name='emoticon-sad-outline' color='white' iconColor='#FF360A' value='Ruim' size={96} fontSize={32} Execute={Votar} />

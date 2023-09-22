@@ -13,7 +13,7 @@ const Label = (props) => {
     })
     return (
         <>
-            <Text style={estilos.Texto}>{props.value}</Text>
+            <Text numberOfLines={props.numberOfLines} style={estilos.Texto}>{props.value}</Text>
         </>
     )
 }
