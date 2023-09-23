@@ -28,9 +28,32 @@ const estilos = StyleSheet.create({
 const Login = (props) => {
     const [email, setEmail] = useState()
     const [senha, setSenha] = useState()
+    const [corInvalido, setCorInvalido] = useState('transparent')
+
+    const validateEmail = () => {
+        const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
+        setCorInvalido('#FD7979')
+        return emailRegex.test(email)
+    }
+
+    const senhaContemNoEmail = () => {
+        return email.includes(senha)
+    }
+
+    const validateInputs = () => {
+        if (!validateEmail() || !senhaContemNoEmail()) {
+            setCorInvalido('#FD7979')
+            return false
+        }
+        setCorInvalido('transparent')
+        return true
+    }
 
     const Entrar = () => {
-        props.navigation.push('Drawer')
+        if (validateInputs())
+            props.navigation.push('Drawer')
+        setEmail('')
+        setSenha('')
     }
     const CriarMinhaConta = () => {
         props.navigation.push('NewAccount')
@@ -56,7 +79,7 @@ const Login = (props) => {
                     <Label value='Senha' color='white' fontSize={16} paddingTop={4} />
                     <InputText value={senha} placeholder='********' color='#3F92C5' width={512} height={32} fontSize={12}
                         onChangeText={setSenha} keyboardType='visible-password' />
-                    <Label value='E-mail e/ou senha inválidos.' color='#FD7979' fontSize={14} paddingBottom={8} />
+                    <Label value='E-mail e/ou senha inválidos.' color={corInvalido} fontSize={14} paddingBottom={8} />
                 </View>
                 <Button value='Entrar' color='white' iconColor='white' backgroundColor='#37BD6D' width={512} height={32} size={0} fontSize={16}
                     Execute={Entrar} />
