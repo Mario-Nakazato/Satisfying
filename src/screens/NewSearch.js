@@ -15,14 +15,37 @@ const estilos = StyleSheet.create({
 })
 
 const NewSearch = (props) => {
-    const [nome, setNome] = useState()
-    const [data, setData] = useState()
+    const [nome, setNome] = useState('')
+    const [data, setData] = useState('')
+    const [corNomeInvalido, setCorNomeInvalido] = useState('transparent')
+    const [corDataInvalida, setCorDataInvalida] = useState('transparent')
 
     const Imagem = () => {
         console.log('Botão - Câmera/Galeria de imagens')
     }
+
+    const validateInputs = () => {
+        const datePattern = /^(\d{2})\/(\d{2})\/(\d{4})$/
+
+        if (!nome.trim())
+            setCorNomeInvalido('#FD7979')
+        else
+            setCorNomeInvalido('transparent')
+
+        if (!data.match(datePattern))
+            setCorDataInvalida('#FD7979')
+        else
+            setCorDataInvalida('transparent')
+
+        if (!nome.trim() || !data.match(datePattern))
+            return false
+
+        return true
+    }
+
     const Cadastrar = () => {
-        props.navigation.pop()
+        if (validateInputs())
+            props.navigation.pop()
     }
 
     return (
@@ -32,7 +55,7 @@ const NewSearch = (props) => {
                     <Label value='Nome' color='white' fontSize={16} paddingTop={4} />
                     <InputText value={nome} color='#3F92C5' width={512} height={32} fontSize={12}
                         onChangeText={setNome} keyboardType='default' />
-                    <Label value='Preencha no nome da pesquisa' color='#FD7979' fontSize={12} />
+                    <Label value='Preencha no nome da pesquisa' color={corNomeInvalido} fontSize={12} />
                 </View>
                 <View>
                     <Label value='Data' color='white' fontSize={16} paddingTop={4} />
@@ -40,7 +63,7 @@ const NewSearch = (props) => {
                         right={<TextInput.Icon style={{ left: 12 }} icon='calendar-month-outline' color='#8B8B8B' />}
                         contentStyle={{ right: 0, fontFamily: 'AveriaLibre-Regular', fontSize: 12 }} backgroundColor='white' width={512}
                         height={32} onChangeText={setData} />
-                    <Label value='Preencha a data' color='#FD7979' fontSize={12} />
+                    <Label value='Preencha a data' color={corDataInvalida} fontSize={12} />
                 </View>
                 <View>
                     <Label value='Imagem' color='white' fontSize={16} paddingTop={4} />
