@@ -16,7 +16,8 @@ const InputTextPaper = (props) => {
         <>
             <TextInput style={estilos.TextInput} placeholder={props.placeholder} value={props.value} left={props.left}
                 right={props.right} textColor={props.textColor} placeholderTextColor={props.placeholderTextColor}
-                contentStyle={props.contentStyle} onChangeText={props.onChangeText} />
+                contentStyle={props.contentStyle} onChangeText={props.onChangeText} editable={props.editable}
+                selectTextOnFocus={props.selectTextOnFocus} pointerEvents={props.pointerEvents} />
         </>
     )
 }

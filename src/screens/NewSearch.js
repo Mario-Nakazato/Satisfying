@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import ScreensSS from '../styles/ScreensSS'
 import Label from '../components/Label'
 import InputText from '../components/InputText'
 import Button from '../components/Button'
 import InputTextPaper from '../components/InputTextPaper'
 import { TextInput } from 'react-native-paper'
+import DatePicker from 'react-native-date-picker'
 
 const estilos = StyleSheet.create({
     conteinerCadastrar: {
@@ -16,28 +17,32 @@ const estilos = StyleSheet.create({
 
 const NewSearch = (props) => {
     const [nome, setNome] = useState('')
+    const [seletorData, setSeletorData] = useState(new Date())
     const [data, setData] = useState('')
+    const [abrirSeletor, setAbrirSeletor] = useState(false)
     const [corNomeInvalido, setCorNomeInvalido] = useState('transparent')
     const [corDataInvalida, setCorDataInvalida] = useState('transparent')
+
+    const seletor = () => {
+        setAbrirSeletor(true)
+    }
 
     const Imagem = () => {
         console.log('Botão - Câmera/Galeria de imagens')
     }
 
     const validateInputs = () => {
-        const datePattern = /^(\d{2})\/(\d{2})\/(\d{4})$/
-
         if (!nome.trim())
             setCorNomeInvalido('#FD7979')
         else
             setCorNomeInvalido('transparent')
 
-        if (!data.match(datePattern))
+        if (!data.trim())
             setCorDataInvalida('#FD7979')
         else
             setCorDataInvalida('transparent')
 
-        if (!nome.trim() || !data.match(datePattern))
+        if (!nome.trim() || !data.trim())
             return false
 
         return true
@@ -59,11 +64,30 @@ const NewSearch = (props) => {
                 </View>
                 <View>
                     <Label value='Data' color='white' fontSize={16} paddingTop={4} />
-                    <InputTextPaper value={data} color='#3F92C5' textColor='#3F92C5'
-                        right={<TextInput.Icon style={{ left: 12 }} icon='calendar-month-outline' color='#8B8B8B' />}
-                        contentStyle={{ right: 0, fontFamily: 'AveriaLibre-Regular', fontSize: 12 }} backgroundColor='white' width={512}
-                        height={32} onChangeText={setData} />
+                    <TouchableOpacity style={estilos.TouchableOpacity} onPress={seletor}>
+                        <InputTextPaper value={data} color='#3F92C5' textColor='#3F92C5'
+                            right={<TextInput.Icon style={{ left: 12 }} icon='calendar-month-outline' color='#8B8B8B' />}
+                            contentStyle={{ right: 0, fontFamily: 'AveriaLibre-Regular', fontSize: 12 }} backgroundColor='white' width={512}
+                            height={32} onChangeText={setData} editable={false}
+                            selectTextOnFocus={false} pointerEvents='none' />
+                    </TouchableOpacity>
                     <Label value='Preencha a data' color={corDataInvalida} fontSize={12} />
+                    <DatePicker
+                        modal
+                        androidVariant='iosClone'
+                        locale='pt-BR'
+                        mode='date'
+                        open={abrirSeletor}
+                        date={seletorData}
+                        onConfirm={(seletorData) => {
+                            setAbrirSeletor(false)
+                            setSeletorData(seletorData)
+                            setData(seletorData.toLocaleDateString('pt-BR'))
+                        }}
+                        onCancel={() => {
+                            setAbrirSeletor(false)
+                        }}
+                    />
                 </View>
                 <View>
                     <Label value='Imagem' color='white' fontSize={16} paddingTop={4} />
