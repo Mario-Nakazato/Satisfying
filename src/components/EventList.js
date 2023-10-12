@@ -5,6 +5,7 @@ const EventList = (props) => {
 	const estilos = StyleSheet.create({
 		contentContainerStyle: {
 			alignItems: 'center',
+			paddingHorizontal: '3%'
 		},
 	})
 
