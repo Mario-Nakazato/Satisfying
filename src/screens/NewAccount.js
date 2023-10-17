@@ -4,6 +4,8 @@ import ScreensSS from '../styles/ScreensSS'
 import Label from '../components/Label'
 import InputText from '../components/InputText'
 import Button from '../components/Button'
+import { createUserWithEmailAndPassword } from "firebase/auth"
+import { auth } from '../database/Config'
 
 const NewAccount = (props) => {
     const [email, setEmail] = useState('')
@@ -35,9 +37,24 @@ const NewAccount = (props) => {
         return true
     }
 
+    const createUser = () => {
+        createUserWithEmailAndPassword(auth, email, senha)
+            .then((userCredential) => {
+                const user = userCredential.user
+                console.log("NewAccount", user)
+                props.navigation.pop()
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log("NewAccount", errorCode, errorMessage)
+                setErro('Credencial parece ser inválido')
+            })
+    }
+
     const Cadastrar = () => {
         if (validateInputs())
-            props.navigation.pop()
+            createUser()
     }
     return (
         <View style={ScreensSS.conteiner}>
