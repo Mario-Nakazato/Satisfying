@@ -4,6 +4,8 @@ import ScreensSS from '../styles/ScreensSS'
 import InputText from '../components/InputText'
 import Label from '../components/Label'
 import Button from '../components/Button'
+import { sendPasswordResetEmail } from "firebase/auth"
+import { auth } from '../database/Config'
 
 const RecoverPassword = (props) => {
     const [email, setEmail] = useState()
@@ -15,9 +17,23 @@ const RecoverPassword = (props) => {
         return emailRegex.test(email)
     }
 
+    const sendPassword = () => {
+        setCorEmailInvalido('transparent')
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                props.navigation.pop()
+                console.log("RecoverPassword Enviar")
+            })
+            .catch((error) => {
+                const errorCode = error.code
+                const errorMessage = error.message
+                console.log("RecoverPassword", errorCode, errorMessage)
+            })
+    }
+
     const Cadastrar = () => {
         if (validateEmail())
-            props.navigation.pop()
+            sendPassword()
     }
 
     return (
