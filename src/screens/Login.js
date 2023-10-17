@@ -5,6 +5,8 @@ import Label from '../components/Label'
 import InputText from '../components/InputText'
 import Button from '../components/Button'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from '../database/Config'
 
 const estilos = StyleSheet.create({
     conteinerTitulo: {
@@ -36,12 +38,8 @@ const Login = (props) => {
         return emailRegex.test(email)
     }
 
-    const senhaContemNoEmail = () => {
-        return email.includes(senha)
-    }
-
     const validateInputs = () => {
-        if (!validateEmail() || !senhaContemNoEmail()) {
+        if (!validateEmail()) {
             setCorInvalido('#FD7979')
             return false
         }
@@ -49,9 +47,24 @@ const Login = (props) => {
         return true
     }
 
+    const signIn = () => {
+        signInWithEmailAndPassword(auth, email, senha)
+            .then((userCredential) => {
+                const user = userCredential.user
+                console.log("Login", user)
+                props.navigation.push('Drawer', { email: user.email })
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message
+                console.log("Login", errorCode, errorMessage)
+                setCorInvalido('#FD7979')
+            })
+    }
+
     const Entrar = () => {
         if (validateInputs())
-            props.navigation.push('Drawer')
+            signIn()
         setEmail('')
         setSenha('')
     }
