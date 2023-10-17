@@ -52,7 +52,7 @@ const Login = (props) => {
             .then((userCredential) => {
                 const user = userCredential.user
                 console.log("Login", user)
-                props.navigation.push('Drawer', { email: user.email })
+                props.navigation.push('Drawer')
             })
             .catch((error) => {
                 const errorCode = error.code;

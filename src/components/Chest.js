@@ -7,15 +7,23 @@ import {
 import { Divider } from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Label from './Label'
+import { signOut } from "firebase/auth"
+import { auth } from '../database/Config'
 
 const Chest = (props) => {
     const Sair = () => {
-        props.navigation.popToTop()
+        signOut(auth).then(() => {
+            props.navigation.popToTop()
+            console.log("Chest Sair")
+        }).catch((error) => {
+            console.log("Chest", error)
+        })
     }
     return (
         <DrawerContentScrollView
+            {...props}
             contentContainerStyle={{
-                ...props, flexGrow: 1, justifyContent: 'space-between'
+                flexGrow: 1, justifyContent: 'space-between'
             }}>
             <View>
                 <View style={{ color: 'white', alignSelf: 'center', marginTop: 16, }}>

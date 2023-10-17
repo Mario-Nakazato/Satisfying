@@ -5,7 +5,7 @@ import Chest from "../components/Chest"
 
 const DrawerNavigator = createDrawerNavigator()
 
-const Drawer = () => {
+const Drawer = (props) => {
     return (
         <DrawerNavigator.Navigator
             drawerContent={(props) => <Chest {...props} />}
