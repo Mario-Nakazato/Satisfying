@@ -40,14 +40,11 @@ const NewAccount = (props) => {
     const createUser = () => {
         createUserWithEmailAndPassword(auth, email, senha)
             .then((userCredential) => {
-                const user = userCredential.user
-                console.log("NewAccount", user)
+                console.log("NewAccount: ", userCredential)
                 props.navigation.pop()
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log("NewAccount", errorCode, errorMessage)
+                console.log("NewAccount erro: ", error)
                 setErro('Credencial parece ser inválido')
             })
     }

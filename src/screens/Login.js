@@ -50,14 +50,11 @@ const Login = (props) => {
     const signIn = () => {
         signInWithEmailAndPassword(auth, email, senha)
             .then((userCredential) => {
-                const user = userCredential.user
-                console.log("Login", user)
+                console.log("Login: ", userCredential)
                 props.navigation.push('Drawer')
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message
-                console.log("Login", errorCode, errorMessage)
+                console.log("Login erro: ", error)
                 setCorInvalido('#FD7979')
             })
     }

@@ -14,9 +14,8 @@ const Chest = (props) => {
     const Sair = () => {
         signOut(auth).then(() => {
             props.navigation.popToTop()
-            console.log("Chest Sair")
         }).catch((error) => {
-            console.log("Chest", error)
+            console.log("Chest erro: ", error)
         })
     }
     return (

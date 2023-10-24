@@ -19,7 +19,9 @@ const EventList = (props) => {
 				</TouchableOpacity>
 			)}
 			keyExtractor={item => item.id}
-			horizontal={true} />
+			horizontal={true}
+			showsHorizontalScrollIndicator={false}
+		/>
 	)
 }
 

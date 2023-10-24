@@ -22,12 +22,9 @@ const RecoverPassword = (props) => {
         sendPasswordResetEmail(auth, email)
             .then(() => {
                 props.navigation.pop()
-                console.log("RecoverPassword Enviar")
             })
             .catch((error) => {
-                const errorCode = error.code
-                const errorMessage = error.message
-                console.log("RecoverPassword", errorCode, errorMessage)
+                console.log("RecoverPassword erro: ", error)
             })
     }
 
