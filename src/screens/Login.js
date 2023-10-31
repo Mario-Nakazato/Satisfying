@@ -7,6 +7,8 @@ import Button from '../components/Button'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from '../database/Config'
+import { useDispatch } from 'react-redux/es/exports'
+import { reducerSetUsuario } from '../redux/UserSlice'
 
 const estilos = StyleSheet.create({
     conteinerTitulo: {
@@ -31,6 +33,8 @@ const Login = (props) => {
     const [email, setEmail] = useState()
     const [senha, setSenha] = useState()
     const [corInvalido, setCorInvalido] = useState('transparent')
+    
+    const dispatch = useDispatch()
 
     const validateEmail = () => {
         const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
@@ -50,7 +54,7 @@ const Login = (props) => {
     const signIn = () => {
         signInWithEmailAndPassword(auth, email, senha)
             .then((userCredential) => {
-                console.log("Login: ", userCredential)
+                dispatch(reducerSetUsuario({ usuario: JSON.stringify(userCredential.user) }))
                 props.navigation.push('Drawer')
             })
             .catch((error) => {

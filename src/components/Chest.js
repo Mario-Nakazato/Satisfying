@@ -26,7 +26,7 @@ const Chest = (props) => {
             }}>
             <View>
                 <View style={{ color: 'white', alignSelf: 'center', marginTop: 16, }}>
-                    <Label value='email@provedor.com' color='white' fontSize={20} numberOfLines={1} />
+                    <Label value={props.email} color='white' fontSize={20} numberOfLines={1} />
                 </View>
                 <Divider bold='true' style={{ width: '88%', alignSelf: 'center', marginTop: 16 }} />
                 <DrawerItemList {...props} />

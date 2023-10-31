@@ -2,13 +2,15 @@ import { createDrawerNavigator } from "@react-navigation/drawer"
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Home from "./Home"
 import Chest from "../components/Chest"
+import { useSelector } from "react-redux"
 
 const DrawerNavigator = createDrawerNavigator()
 
 const Drawer = (props) => {
+    const { usuario } = useSelector((state) => state.usuario)
     return (
         <DrawerNavigator.Navigator
-            drawerContent={(props) => <Chest {...props} />}
+            drawerContent={(props) => <Chest {...props} email={usuario.email} />}
             screenOptions={{
                 headerTintColor: 'white',
                 headerStyle: { backgroundColor: '#2B1D62' },
