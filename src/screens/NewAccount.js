@@ -40,7 +40,6 @@ const NewAccount = (props) => {
     const createUser = () => {
         createUserWithEmailAndPassword(auth, email, senha)
             .then((userCredential) => {
-                console.log("NewAccount: ", userCredential)
                 props.navigation.pop()
             })
             .catch((error) => {
