@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { TextInput } from 'react-native-paper'
 
 const InputTextPaper = (props) => {
@@ -17,7 +17,7 @@ const InputTextPaper = (props) => {
             <TextInput style={estilos.TextInput} placeholder={props.placeholder} value={props.value} left={props.left}
                 right={props.right} textColor={props.textColor} placeholderTextColor={props.placeholderTextColor}
                 contentStyle={props.contentStyle} onChangeText={props.onChangeText} editable={props.editable}
-                selectTextOnFocus={props.selectTextOnFocus} pointerEvents={props.pointerEvents} />
+                selectTextOnFocus={props.selectTextOnFocus} pointerEvents={props.pointerEvents} onSubmitEditing={props.onSubmitEditing} />
         </>
     )
 }
