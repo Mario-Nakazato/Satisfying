@@ -1,4 +1,5 @@
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Image, StyleSheet } from 'react-native'
+import Label from '../components/Label'
 
 const EventItem = (props) => {
     return (
@@ -7,8 +8,8 @@ const EventItem = (props) => {
                 <Image style={styles.image} source={{ uri: props.imagem }} />
             </View>
             <View style={styles.texto}>
-                <Text style={styles.title}>{props.nome.toUpperCase()}</Text>
-                <Text style={styles.date}>{props.data}</Text>
+                <Label value={props.nome.toUpperCase()} color='#4193c5' textAlign='center' fontSize={20} numberOfLines={1} />
+                <Label value={props.data} color='#8B8B8B' textAlign='center' fontSize={12} numberOfLines={1} />
             </View>
         </View>
     )
@@ -31,17 +32,6 @@ const styles = StyleSheet.create({
     },
     texto: {
         marginTop: 16,
-    },
-    title: {
-        fontFamily: 'AveriaLibre-Regular',
-        fontSize: 20,
-        color: '#4193c5',
-        textAlign: 'center',
-    },
-    date: {
-        fontFamily: 'AveriaLibre-Regular',
-        fontSize: 12,
-        textAlign: 'center',
     }
 })
 

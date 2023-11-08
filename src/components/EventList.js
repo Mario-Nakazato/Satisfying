@@ -15,7 +15,7 @@ const EventList = (props) => {
 			data={props.events}
 			renderItem={({ item }) => (
 				<TouchableOpacity onPress={props.Execute}>
-					<EventItem nome={item.nome} data={item.data} imagem={item.imagem} />
+					<EventItem nome={item.name} data={item.date} imagem={item.image} />
 				</TouchableOpacity>
 			)}
 			keyExtractor={item => item.id}
