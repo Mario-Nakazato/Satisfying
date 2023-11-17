@@ -72,7 +72,8 @@ const NewSearch = (props) => {
                                     user: usuario.email,
                                     name: nome,
                                     date: data,
-                                    image: url
+                                    image: url,
+                                    image_fileName: imagem.fileName
                                 })
                                     .then((docRef) => {
                                         console.log('Evento adicionado: ', docRef)
@@ -90,18 +91,25 @@ const NewSearch = (props) => {
                         console.log("Upload erro: ", error)
                     })
             } else {
-                addDoc(collection(db, "events"), {
-                    user: usuario.email,
-                    name: nome,
-                    date: data,
-                    image: 'https://firebasestorage.googleapis.com/v0/b/satisfying-32305.appspot.com/o/semImagem.jpg?alt=media&token=3dce6265-c736-4edd-a754-0a5fb4821f8f'
-                })
-                    .then((docRef) => {
-                        console.log('Evento adicionado: ', docRef)
-                        props.navigation.pop()
+                const imageRef = ref(store, 'semImagem.jpg')
+                getDownloadURL(imageRef)
+                    .then((url) => {
+                        addDoc(collection(db, "events"), {
+                            user: usuario.email,
+                            name: nome,
+                            date: data,
+                            image: url
+                        })
+                            .then((docRef) => {
+                                console.log('Evento adicionado: ', docRef)
+                                props.navigation.pop()
+                            })
+                            .catch((error) => {
+                                console.log('Erro ao adicionar evento: ', error)
+                            })
                     })
                     .catch((error) => {
-                        console.log('Erro ao adicionar evento: ', error)
+                        console.log("Download URL erro:", error)
                     })
             }
         }
