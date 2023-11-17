@@ -10,25 +10,6 @@ import { auth } from '../database/Config'
 import { useDispatch } from 'react-redux/es/exports'
 import { reducerSetUsuario } from '../redux/UserSlice'
 
-const estilos = StyleSheet.create({
-    conteinerTitulo: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    conteinerEntrar: {
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
-    conteinerOp: {
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        height: 52,
-    },
-})
-
 const Login = (props) => {
     const [email, setEmail] = useState()
     const [senha, setSenha] = useState()
@@ -107,5 +88,24 @@ const Login = (props) => {
         </View>
     )
 }
+
+const estilos = StyleSheet.create({
+    conteinerTitulo: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    conteinerEntrar: {
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    conteinerOp: {
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        height: 52,
+    },
+})
 
 export default Login

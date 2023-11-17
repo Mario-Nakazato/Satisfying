@@ -2,14 +2,6 @@ import { View, StyleSheet } from 'react-native'
 import ScreensSS from '../styles/ScreensSS'
 import Button from '../components/Button'
 
-const estilos = StyleSheet.create({
-    conteiner: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        width: '100%'
-    },
-})
-
 const SearchActions = (props) => {
     const Modificar = () => {
         props.navigation.push('ModifySearch')
@@ -35,5 +27,13 @@ const SearchActions = (props) => {
         </View>
     )
 }
+
+const estilos = StyleSheet.create({
+    conteiner: {
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        width: '100%'
+    },
+})
 
 export default SearchActions
