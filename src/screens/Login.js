@@ -22,7 +22,6 @@ const Login = (props) => {
         setCorInvalido('#FD7979')
         return emailRegex.test(email)
     }
-
     const validateInputs = () => {
         if (!validateEmail()) {
             setCorInvalido('#FD7979')
@@ -31,7 +30,6 @@ const Login = (props) => {
         setCorInvalido('transparent')
         return true
     }
-
     const signIn = () => {
         signInWithEmailAndPassword(auth, email, senha)
             .then((userCredential) => {
@@ -43,7 +41,6 @@ const Login = (props) => {
                 setCorInvalido('#FD7979')
             })
     }
-
     const Entrar = () => {
         if (validateInputs())
             signIn()
@@ -56,7 +53,6 @@ const Login = (props) => {
     const EsqueciMinhaSenha = () => {
         props.navigation.push('RecoverPassword')
     }
-
     return (
         <View style={ScreensSS.conteiner}>
             <View style={estilos.conteinerTitulo}>

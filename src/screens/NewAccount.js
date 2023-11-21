@@ -19,24 +19,19 @@ const NewAccount = (props) => {
         setCorInvalido('#FD7979')
         return emailRegex.test(email)
     }
-
     const validateInputs = () => {
         if (!validateEmail()) {
             setErro('E-mail parece ser inválido')
             return false
         }
-
         if (senha !== repetirSenha || !senha.trim() || !repetirSenha.trim()) {
             setErro('O campo repetir senha difere da senha')
             setCorInvalido('#FD7979')
             return false
         }
-
         setErro('')
-
         return true
     }
-
     const createUser = () => {
         createUserWithEmailAndPassword(auth, email, senha)
             .then((userCredential) => {
@@ -47,7 +42,6 @@ const NewAccount = (props) => {
                 setErro('Credencial parece ser inválido')
             })
     }
-
     const Cadastrar = () => {
         if (validateInputs())
             createUser()

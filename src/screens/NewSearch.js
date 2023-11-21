@@ -27,7 +27,6 @@ const NewSearch = (props) => {
     const seletor = () => {
         setAbrirSeletor(true)
     }
-
     const Imagem = () => {
         console.log('Botão - Câmera/Galeria de imagens')
         launchCamera({ mediaType: 'photo', cameraType: 'back', quality: 1 })
@@ -36,10 +35,9 @@ const NewSearch = (props) => {
                 setImagem(result.assets[0])
             })
             .catch((error) => {
-                console.log("Imagem erro: ", error)
+                console.log("Erro na câmera: ", error)
             })
     }
-
     const validateInputs = () => {
         if (!nome.trim())
             setCorNomeInvalido('#FD7979')
@@ -56,7 +54,6 @@ const NewSearch = (props) => {
 
         return true
     }
-
     const Cadastrar = async () => {
         if (validateInputs()) {
             if (imagem !== '') {
@@ -65,7 +62,6 @@ const NewSearch = (props) => {
                 const blob = await file.blob()
                 uploadBytes(imageRef, blob, { contentType: 'image/jpeg' })
                     .then((success) => {
-                        console.log("Upload sucesso", success)
                         getDownloadURL(imageRef)
                             .then((url) => {
                                 addDoc(collection(db, "events"), {
@@ -76,7 +72,6 @@ const NewSearch = (props) => {
                                     image_fileName: imagem.fileName
                                 })
                                     .then((docRef) => {
-                                        console.log('Evento adicionado: ', docRef)
                                         props.navigation.pop()
                                     })
                                     .catch((error) => {
@@ -114,7 +109,6 @@ const NewSearch = (props) => {
             }
         }
     }
-
     return (
         <View style={ScreensSS.conteiner}>
             <View style={estilos.conteinerCadastrar}>

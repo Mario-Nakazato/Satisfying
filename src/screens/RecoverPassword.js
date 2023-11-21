@@ -16,7 +16,6 @@ const RecoverPassword = (props) => {
         setCorEmailInvalido('#FD7979')
         return emailRegex.test(email)
     }
-
     const sendPassword = () => {
         setCorEmailInvalido('transparent')
         sendPasswordResetEmail(auth, email)
@@ -27,12 +26,10 @@ const RecoverPassword = (props) => {
                 console.log("RecoverPassword erro: ", error)
             })
     }
-
     const Cadastrar = () => {
         if (validateEmail())
             sendPassword()
     }
-
     return (
         <View style={ScreensSS.conteiner}>
             <View>

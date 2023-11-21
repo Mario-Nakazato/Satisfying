@@ -10,7 +10,6 @@ const EventList = (props) => {
 		dispatch(reducerSetEvento({ evento: JSON.stringify(item) }))
 		props.Execute()
 	}
-
 	return (
 		<FlatList
 			contentContainerStyle={estilos.contentContainerStyle}

@@ -15,6 +15,7 @@ const Home = (props) => {
 	const [eventos, setEventos] = useState('')
 
 	const events = collection(db, 'events')
+
 	useEffect(() => {
 		const q = query(events, where('user', '==', usuario.email))
 		onSnapshot(q, (snapshot) => {
@@ -35,7 +36,6 @@ const Home = (props) => {
 	const Card = () => {
 		props.navigation.push('SearchActions')
 	}
-
 	const Buscar = () => {
 		if (buscar !== '') {
 			const q = query(events, where('user', '==', usuario.email), where('name', '==', buscar))
@@ -63,7 +63,6 @@ const Home = (props) => {
 			})
 		}
 	}
-
 	return (
 		<View style={ScreensSS.conteiner}>
 			<InputTextPaper placeholder='Insira o termo de busca...' value={buscar} onChangeText={setBuscar}

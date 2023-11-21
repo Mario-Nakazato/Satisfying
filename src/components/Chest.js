@@ -21,9 +21,7 @@ const Chest = (props) => {
     return (
         <DrawerContentScrollView
             {...props}
-            contentContainerStyle={{
-                flexGrow: 1, justifyContent: 'space-between'
-            }}>
+            contentContainerStyle={{ flexGrow: 1, justifyContent: 'space-between' }}>
             <View>
                 <View style={{ color: 'white', alignSelf: 'center', marginTop: 16, }}>
                     <Label value={props.email} color='white' fontSize={20} numberOfLines={1} />
@@ -31,8 +29,9 @@ const Chest = (props) => {
                 <Divider bold='true' style={{ width: '88%', alignSelf: 'center', marginTop: 16 }} />
                 <DrawerItemList {...props} />
             </View>
-            <DrawerItem style={{}} labelStyle={{ color: 'white', right: 24, fontSize: 20, fontFamily: 'AveriaLibre-Regular' }} label="Sair" onPress={Sair}
-                icon={() => <Icon style={{ transform: [{ rotate: '90deg' }], }} name='tray-arrow-up' size={28} color='white' />} />
+            <DrawerItem style={{}} labelStyle={{ color: 'white', right: 24, fontSize: 20, fontFamily: 'AveriaLibre-Regular' }}
+                label="Sair" onPress={Sair} icon={() => <Icon style={{ transform: [{ rotate: '90deg' }], }} name='tray-arrow-up'
+                    size={28} color='white' />} />
         </DrawerContentScrollView >
     )
 }

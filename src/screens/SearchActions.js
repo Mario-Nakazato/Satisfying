@@ -12,7 +12,6 @@ const SearchActions = (props) => {
     const Relatorio = () => {
         props.navigation.push('Report')
     }
-
     return (
         <View style={ScreensSS.conteiner}>
             <View style={estilos.conteiner}>

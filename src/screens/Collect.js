@@ -3,15 +3,6 @@ import ScreensSS from '../styles/ScreensSS'
 import Button from '../components/Button'
 import Label from '../components/Label'
 
-const estilos = StyleSheet.create({
-    button: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-        width: '100%',
-    },
-})
-
 const Collect = (props) => {
     const Voltar = () => {
         props.navigation.pop()
@@ -19,7 +10,6 @@ const Collect = (props) => {
     const Votar = () => {
         props.navigation.push('ThanksParticipation')
     }
-
     return (
         <View style={ScreensSS.conteiner}>
             <View style={{ position: 'absolute', top: 0, right: 0 }}>
@@ -36,5 +26,14 @@ const Collect = (props) => {
         </View>
     )
 }
+
+const estilos = StyleSheet.create({
+    button: {
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        width: '100%',
+    },
+})
 
 export default Collect

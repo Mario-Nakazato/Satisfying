@@ -11,7 +11,6 @@ const InputTextPaper = (props) => {
             borderTopRightRadius: 0,
         },
     })
-
     return (
         <>
             <TextInput style={estilos.TextInput} placeholder={props.placeholder} value={props.value} left={props.left}

@@ -12,7 +12,6 @@ const InputText = (props) => {
             fontSize: props.fontSize,
         },
     })
-
     return (
         <>
             <TextInput style={estilos.TextInput} placeholder={props.placeholder} value={props.value} color={props.color}

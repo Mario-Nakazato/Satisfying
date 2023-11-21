@@ -8,10 +8,8 @@ const ThanksParticipation = (props) => {
         const timeout = setTimeout(() => {
             props.navigation.pop()
         }, 3000)
-
         return () => clearTimeout(timeout)
     }, [])
-
     return (
         <View style={ScreensSS.conteiner}>
             <Label value='Obrigado por participar da pesquisa!' color='white' fontSize={32} />
