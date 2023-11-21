@@ -5,10 +5,13 @@ import Label from '../components/Label'
 import { useSelector } from "react-redux"
 import { db } from '../database/Config'
 import { doc, updateDoc } from 'firebase/firestore'
+import { useDispatch } from 'react-redux/es/exports'
+import { reducerSetEvento } from '../redux/EventSlice'
 
 const Collect = (props) => {
     const { evento } = useSelector((state) => state.evento)
     
+    const dispatch = useDispatch()
     let votos = evento.votes.slice()
     
     const Voltar = () => {
@@ -21,6 +24,9 @@ const Collect = (props) => {
             votes: votos,
         })
             .then((docRef) => {
+                let e = Object.assign({}, evento)
+                e.votes = votos
+                dispatch(reducerSetEvento({ evento: JSON.stringify(e) }))
                 props.navigation.push('ThanksParticipation')
             })
             .catch((error) => {
