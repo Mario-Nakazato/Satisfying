@@ -69,7 +69,8 @@ const NewSearch = (props) => {
                                     name: nome,
                                     date: data,
                                     image: url,
-                                    image_fileName: imagem.fileName
+                                    image_fileName: imagem.fileName,
+                                    votes: [ 0, 0, 0, 0, 0 ]
                                 })
                                     .then((docRef) => {
                                         props.navigation.pop()
@@ -93,10 +94,10 @@ const NewSearch = (props) => {
                             user: usuario.email,
                             name: nome,
                             date: data,
-                            image: url
+                            image: url,
+                            votes: [ 0, 0, 0, 0, 0 ]
                         })
                             .then((docRef) => {
-                                console.log('Evento adicionado: ', docRef)
                                 props.navigation.pop()
                             })
                             .catch((error) => {

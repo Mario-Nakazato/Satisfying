@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     },
     texto: {
         marginTop: 16,
+        paddingHorizontal: 4
     }
 })
 
