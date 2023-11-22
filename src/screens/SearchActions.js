@@ -4,13 +4,13 @@ import Button from '../components/Button'
 
 const SearchActions = (props) => {
     const Modificar = () => {
-        props.navigation.push('ModifySearch')
+        props.navigation.push('ModifySearch', { evento_id: props.route.params.evento_id })
     }
     const Coletar = () => {
-        props.navigation.push('Collect')
+        props.navigation.push('Collect', { evento_id: props.route.params.evento_id })
     }
     const Relatorio = () => {
-        props.navigation.push('Report')
+        props.navigation.push('Report', { evento_id: props.route.params.evento_id })
     }
 
     return (

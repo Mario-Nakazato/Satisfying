@@ -32,8 +32,8 @@ const Home = (props) => {
 	const NovaPesquisa = () => {
 		props.navigation.push('NewSearch')
 	}
-	const Card = () => {
-		props.navigation.push('SearchActions')
+	const Card = (id) => {
+		props.navigation.push('SearchActions', { evento_id: id })
 	}
 
 	const Buscar = () => {
