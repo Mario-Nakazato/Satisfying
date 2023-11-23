@@ -41,6 +41,11 @@ const Collect = (props) => {
 
         const eventos = collection(db, 'events')
         const id = JSON.parse(evento).id
+        const eventData = JSON.parse(evento)
+        console.log('ID: ', eventData.date)
+        let seila = Date.parse(eventData.date)
+        console.log('Data: ', seila.toLocaleString('pt-BR'))
+        console.log('Tipo: ', typeof seila)
 
         updateDoc(doc(eventos, id), new_data)
             .then((docRef) => {

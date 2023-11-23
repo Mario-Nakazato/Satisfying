@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { View, StyleSheet, Modal, TouchableOpacity } from 'react-native'
 import ScreensSS from '../styles/ScreensSS'
 import Label from '../components/Label'
@@ -7,6 +7,11 @@ import Button from '../components/Button'
 import InputTextPaper from '../components/InputTextPaper'
 import { TextInput } from 'react-native-paper'
 import DatePicker from 'react-native-date-picker'
+import { useSelector } from 'react-redux'
+import { db, store } from '../database/Config'
+import { collection, doc, updateDoc, deleteDoc } from "firebase/firestore"
+import { uploadBytes, ref, getDownloadURL, deleteObject } from 'firebase/storage'
+import { launchCamera } from 'react-native-image-picker'
 
 const estilos = StyleSheet.create({
     conteinerCadastrar: {
@@ -15,11 +20,24 @@ const estilos = StyleSheet.create({
     },
 })
 
+const FormataStringData = (data) =>{
+    var dia  = data.split("/")[0];
+    var mes  = data.split("/")[1];
+    var ano  = data.split("/")[2];
+    return ano + '-' + ("0"+mes).slice(-2) + '-' + ("0"+dia).slice(-2);
+}
+
 const ModifySearch = (props) => {
-    const [nome, setNome] = useState('Carnaval 2024')
-    const [seletorData, setSeletorData] = useState(new Date())
+
+    const { evento }= useSelector((state) => state.evento)
+    const eventData = JSON.parse(evento)
+
+    const [nome, setNome] = useState(eventData.name)
+    const [seletorData, setSeletorData] = useState(new Date(FormataStringData(eventData.date)))
     const [data, setData] = useState(seletorData.toLocaleDateString('pt-BR'))
     const [abrirSeletor, setAbrirSeletor] = useState(false)
+    const [imagemUrl, setImagemUrl] = useState('')
+    const [imagem, setImagem] = useState('')
     const [corNomeInvalido, setCorNomeInvalido] = useState('transparent')
     const [corDataInvalida, setCorDataInvalida] = useState('transparent')
     const [modalVisible, setModalVisible] = useState(false)
@@ -29,7 +47,15 @@ const ModifySearch = (props) => {
     }
 
     const Imagem = () => {
-        console.log('Botão - Modificar Câmera/Galeria de imagens')
+        console.log('Botão - Câmera/Galeria de imagens')
+        launchCamera({ mediaType: 'photo', cameraType: 'back', quality: 1 })
+            .then((result) => {
+                setImagemUrl(result.assets[0].uri)
+                setImagem(result.assets[0])
+            })
+            .catch((error) => {
+                console.log("Imagem erro: ", error)
+            })
     }
 
     const validateInputs = () => {
@@ -49,15 +75,83 @@ const ModifySearch = (props) => {
         return true
     }
 
-    const Salvar = () => {
-        if (validateInputs())
-            props.navigation.navigate('Drawer')
+    const Salvar = async () => {
+
+        const eventos = collection(db, 'events')
+        const id = eventData.id
+        console.log('ID: ', eventData.image)
+
+        if (validateInputs()){
+            if (imagem !== '') {
+                const imageRef = ref(store, eventData.image)
+                const file = await fetch(imagemUrl)
+                const blob = await file.blob()
+                uploadBytes(imageRef, blob, { contentType: 'image/jpeg' })
+                    .then((success) => {
+                        console.log("Upload sucesso", success)
+                        getDownloadURL(imageRef)
+                            .then((url) => {
+                                const new_data = {
+                                    'name': nome,
+                                    'date': data,
+                                    'image': url,
+                                }
+                                updateDoc(doc(eventos, id), new_data)
+                                    .then((docRef) => {
+                                        console.log('Evento atualizado: ' + docRef)
+                                        props.navigation.pop()
+                                    })
+                                    .catch((error) => {
+                                        console.log('Erro ao atualizar evento: ', error)
+                                    })
+                            })
+                            .catch((error) => {
+                                console.log("Download URL erro:", error)
+                            })
+                    })
+                    .catch((error) => {
+                        console.log("Upload erro: ", error)
+                    })
+            } else {
+                const new_data = {
+                    'name': nome,
+                    'date': data,
+                }
+                updateDoc(doc(eventos, id), new_data)
+                    .then((docRef) => {
+                        console.log('Evento atualizado: ' + docRef)
+                        props.navigation.pop()
+                    })
+                    .catch((error) => {
+                        console.log('Erro ao atualizar evento: ', error)
+                    })
+            }
+    }
+        
     }
     const Excluir = () => {
         setModalVisible(true)
     }
     const Sim = () => {
         setModalVisible(false)
+        const eventos = collection(db, 'events')
+        const id = eventData.id
+        deleteDoc(doc(eventos, id))
+            .then((docRef) => {
+                const imageRef = ref(store, eventData.image)
+                deleteObject(imageRef)
+                    .then(() => {
+                        console.log('Imagem excluída: ' + docRef)
+                    })
+                    .catch((error) => {
+                        console.log('Erro ao excluir imagem: ', error)
+                    })
+                console.log('Evento excluído: ' + docRef)
+            })
+            .catch((error) => {
+                console.log('Erro ao excluir evento: ', error)
+            })
+
         props.navigation.navigate('Drawer')
     }
     const Cancelar = () => {
