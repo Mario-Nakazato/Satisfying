@@ -8,11 +8,15 @@ import { TextInput } from 'react-native-paper'
 import { db } from '../database/Config'
 import { collection, query, onSnapshot, where } from 'firebase/firestore'
 import { useSelector } from "react-redux"
+import { useDispatch } from 'react-redux/es/exports'
+import { addEvent, removeEvent } from '../redux/EventSlice'
 
 const Home = (props) => {
 	const { usuario } = useSelector((state) => state.usuario)
 	const [buscar, setBuscar] = useState('')
 	const [eventos, setEventos] = useState('')
+
+	const dispatch = useDispatch()
 
 	const events = collection(db, 'events')
 	useEffect(() => {
@@ -27,13 +31,16 @@ const Home = (props) => {
 			})
 			setEventos(evento)
 		})
+
+		dispatch(removeEvent())
 	}, [])
 
 	const NovaPesquisa = () => {
 		props.navigation.push('NewSearch')
 	}
-	const Card = (id) => {
-		props.navigation.push('SearchActions', { evento_id: id })
+	const Card = (event) => {
+		dispatch(addEvent({ evento: JSON.stringify(event) }))
+		props.navigation.push('SearchActions')
 	}
 
 	const Buscar = () => {

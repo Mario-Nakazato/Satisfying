@@ -4,6 +4,7 @@ import Button from '../components/Button'
 import Label from '../components/Label'
 import { db } from '../database/Config'
 import { collection, doc, updateDoc } from "firebase/firestore"
+import { useSelector } from "react-redux"
 
 const estilos = StyleSheet.create({
     button: {
@@ -16,6 +17,7 @@ const estilos = StyleSheet.create({
 
 const Collect = (props) => {
 
+    const { evento } = useSelector((state) => state.evento)
     let Votos = new Array(5).fill(0)
 
     const Votar = (classe) => {
@@ -33,14 +35,14 @@ const Collect = (props) => {
             'Excelente': Votos[4]
         }
 
-        const eventos = collection(db, 'events')
-        const evento = props.route.params.evento_id
-
         const new_data = {
             'votacao': JSON.stringify(votacao)
         }
 
-        updateDoc(doc(eventos, evento), new_data)
+        const eventos = collection(db, 'events')
+        const id = JSON.parse(evento).id
+
+        updateDoc(doc(eventos, id), new_data)
             .then((docRef) => {
                 console.log('Votação atualizada com sucesso: ' + docRef)
                 props.navigation.pop()

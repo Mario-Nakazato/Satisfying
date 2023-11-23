@@ -2,7 +2,6 @@ import { initializeApp } from "firebase/app"
 import { getAuth } from "firebase/auth"
 import { getFirestore } from "firebase/firestore"
 import { getStorage } from "firebase/storage"
-import { API_KEY, AUTH_DOMAIN, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID, APP_ID } from '@env'
 
 const firebaseConfig = {
     apiKey: process.env.API_KEY,
@@ -11,7 +10,6 @@ const firebaseConfig = {
     storageBucket: process.env.STORAGE_BUCKET,
     messagingSenderId: process.env.MESSAGING_SENDER_ID,
     appId: process.env.APP_ID,
-    measurementId: "G-G6R1G4XPC4"
 }
 
 const app = initializeApp(firebaseConfig)

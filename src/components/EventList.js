@@ -14,7 +14,7 @@ const EventList = (props) => {
 			contentContainerStyle={estilos.contentContainerStyle}
 			data={props.events}
 			renderItem={({ item }) => (
-				<TouchableOpacity onPress={() => props.Execute(item.id)}>
+				<TouchableOpacity onPress={() => props.Execute(item)}>
 					<EventItem nome={item.name} data={item.date} imagem={item.image} />
 				</TouchableOpacity>
 			)}

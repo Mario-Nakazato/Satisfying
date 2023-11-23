@@ -5,17 +5,19 @@ import { PieChart } from 'react-native-svg-charts'
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from '../database/Config'
 import { useEffect, useState } from 'react'
-import Label from '../components/Label'
 import Legenda from '../components/Legenda'
+import { useSelector } from "react-redux"
 
 const Report = (props) => {
 
+    const { evento } = useSelector((state) => state.evento)
     const [pieData, setPieData] = useState([])
     const [isVisivel, setIsVisivel] = useState(false)
-    const colors = ['red', 'orange', 'yellow', 'green', 'blue']
+    const colors = ['#D71515', '#FF3500', '#FFC632', '#38BD6D', '#27BC22']
 
     useEffect(() => {
-		const docRef = doc(db, "events", props.route.params.evento_id);
+        const id = JSON.parse(evento).id
+		const docRef = doc(db, "events", id);
         getDoc(docRef).then((docSnap) => {
             
             const dados = docSnap.data()
