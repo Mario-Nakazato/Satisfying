@@ -11,8 +11,8 @@ import { useDispatch } from 'react-redux/es/exports'
 import { reducerSetUsuario } from '../redux/UserSlice'
 
 const Login = (props) => {
-    const [email, setEmail] = useState()
-    const [senha, setSenha] = useState()
+    const [email, setEmail] = useState('teste@teste.com')
+    const [senha, setSenha] = useState('123456')
     const [corInvalido, setCorInvalido] = useState('transparent')
     
     const dispatch = useDispatch()

@@ -72,7 +72,7 @@ const NewSearch = (props) => {
                                     user: usuario.email,
                                     name: nome,
                                     date: data,
-                                    image: url
+                                    image: url,
                                 })
                                     .then((docRef) => {
                                         console.log('Evento adicionado: ', docRef)

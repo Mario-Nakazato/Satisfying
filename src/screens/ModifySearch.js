@@ -20,20 +20,13 @@ const estilos = StyleSheet.create({
     },
 })
 
-const FormataStringData = (data) =>{
-    var dia  = data.split("/")[0];
-    var mes  = data.split("/")[1];
-    var ano  = data.split("/")[2];
-    return ano + '-' + ("0"+mes).slice(-2) + '-' + ("0"+dia).slice(-2);
-}
-
 const ModifySearch = (props) => {
 
     const { evento }= useSelector((state) => state.evento)
     const eventData = JSON.parse(evento)
 
     const [nome, setNome] = useState(eventData.name)
-    const [seletorData, setSeletorData] = useState(new Date(FormataStringData(eventData.date)))
+    const [seletorData, setSeletorData] = useState(new Date())
     const [data, setData] = useState(seletorData.toLocaleDateString('pt-BR'))
     const [abrirSeletor, setAbrirSeletor] = useState(false)
     const [imagemUrl, setImagemUrl] = useState('')

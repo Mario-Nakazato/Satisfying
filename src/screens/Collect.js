@@ -5,6 +5,9 @@ import Label from '../components/Label'
 import { db } from '../database/Config'
 import { collection, doc, updateDoc } from "firebase/firestore"
 import { useSelector } from "react-redux"
+import { useEffect } from 'react'
+import { addEvent } from '../redux/EventSlice'
+import { useDispatch } from 'react-redux/es/exports'
 
 const estilos = StyleSheet.create({
     button: {
@@ -18,7 +21,23 @@ const estilos = StyleSheet.create({
 const Collect = (props) => {
 
     const { evento } = useSelector((state) => state.evento)
+    const eventData = JSON.parse(evento)
     let Votos = new Array(5).fill(0)
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const votacao = JSON.parse(evento).votacao
+        if (votacao) {
+            const votos = JSON.parse(votacao)
+            for (let i = 0; i < 5; i++) {
+                Votos[i] = votos[Object.keys(votos)[i]]
+            }
+        }
+        else{
+            console.log('Não há votação')
+        }
+    }, [])
 
     const Votar = (classe) => {
         Votos[classe]++
@@ -35,17 +54,15 @@ const Collect = (props) => {
             'Excelente': Votos[4]
         }
 
+        eventData.votacao = JSON.stringify(votacao)
+        dispatch(addEvent({ evento: JSON.stringify(eventData) }))
+
         const new_data = {
             'votacao': JSON.stringify(votacao)
         }
 
         const eventos = collection(db, 'events')
-        const id = JSON.parse(evento).id
-        const eventData = JSON.parse(evento)
-        console.log('ID: ', eventData.date)
-        let seila = Date.parse(eventData.date)
-        console.log('Data: ', seila.toLocaleString('pt-BR'))
-        console.log('Tipo: ', typeof seila)
+        const id = eventData.id
 
         updateDoc(doc(eventos, id), new_data)
             .then((docRef) => {
@@ -62,7 +79,7 @@ const Collect = (props) => {
             <View style={{ position: 'absolute', top: 0, right: 0 }}>
                 <Button iconColor='white' backgroundColor='#372775' width={32} height={32} Execute={Voltar} />
             </View>
-            <Label value='O que você achou do Carnaval 2024 ?' color='white' fontSize={32} numberOfLines={2} />
+            <Label value={`O que você achou do ${eventData.name} ?`} color='white' fontSize={32} numberOfLines={2} />
             <View style={estilos.button}>
                 <Button name='emoticon-angry-outline' color='white' iconColor='#D71616' value='Péssimo' size={96} fontSize={32} Execute={() => Votar(0)} />
                 <Button name='emoticon-sad-outline' color='white' iconColor='#FF360A' value='Ruim' size={96} fontSize={32} Execute={() => Votar(1)} />
